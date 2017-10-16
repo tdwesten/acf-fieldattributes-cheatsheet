@@ -149,7 +149,7 @@ $attributes = [
 ### Page Link
 ```php
 $attributes = [
-    'post_type'	=> array(),
+    'post_type'	=> string || array(), // Use string for one post_type, array for multiple post_types
     'taxonomy' => array(),
     'allow_null' => 0,
     'multiple' => 0,
@@ -159,7 +159,7 @@ $attributes = [
 ### Relationship
 ```php
 $attributes = [
-    'post_type'	=> array(),
+    'post_type'	=> string || array(), // Use string for one post_type, array for multiple post_types
     'taxonomy' => array(),
     'min' => 0,
     'max'  => 0,
@@ -168,6 +168,7 @@ $attributes = [
     'return_format' => 'object'
 ];
 ```
+
 ### Taxonomy
 ```php
 $attributes = [
