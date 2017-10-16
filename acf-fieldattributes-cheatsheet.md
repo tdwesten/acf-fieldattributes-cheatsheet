@@ -195,8 +195,10 @@ $attributes = [
 $attributes = [
     'multiple' => 0,
     'allow_null' => 0,
-    'choices' => array(),
-    'default_value'	=> '',
+    'choices' => [
+    	[ 'value' => 'Label', ]
+    ],
+    'default_value'	=> 'value',
     'ui' => 0,
     'ajax' => 0,
     'placeholder' => '',
@@ -207,8 +209,10 @@ $attributes = [
 ```php
 $attributes = [
     'layout' => 'vertical',
-    'choices' => array(),
-    'default_value' => '',
+    'choices' => [
+    	[ 'value' => 'Label', ]
+    ],
+    'default_value' => 'value',
     'allow_custom' => 0,
     'save_custom' => 0,
     'toggle' => 0,
@@ -219,8 +223,10 @@ $attributes = [
 ```php
 $attributes = [
     'layout' => 'vertical',
-    'choices' => array(),
-    'default_value' => '',
+    'choices' => [
+    	[ 'value' => 'Label', ]
+    ],
+    'default_value' => 'value',
     'other_choice' => 0,
     'save_other_choice'	=> 0,
     'allow_null' => 0,
