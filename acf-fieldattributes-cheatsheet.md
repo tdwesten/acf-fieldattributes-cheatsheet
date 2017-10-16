@@ -340,3 +340,19 @@ $attributes = [
     'layout' => 'block'
 ];
 ```
+
+# Field group config
+Apart from the specific fields there are some default setting for the entire group: 
+
+### GroupConfig
+```php
+$group = new Fieldsbuilder('name', [
+    'key' => 'custom_name',
+    'title' => 'Name',
+    'style' => 'default' || 'seamless',
+    'position' => 'normal' || 'acf_after_title' || 'side',
+    'menu_order' => 0,
+    'label_placement' => 'top' || 'left',  
+    'instruction_placement' => 'label' || 'field', // Place label below label or below field
+]);
+```
