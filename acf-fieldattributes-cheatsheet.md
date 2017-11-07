@@ -1,8 +1,10 @@
 # Fields attributes cheatsheet
 This is a overview of all default attributes associated with the different ACF(pro) fields. This Cheatsheet is quite handy when creating ACF fields with the [StoutLogic Acf Builder](https://github.com/StoutLogic/acf-builder).
 
-Last update: 27/09/2017
-ACF version: 5.6.2
+Last update: 07-11-2017
+ACF version: 5.6.4
+
+Full description about registering ACF Fields for PHP is available her: [Register fields via PHP](https://www.advancedcustomfields.com/resources/register-fields-via-php/)
 
 ### Default field attributes
 ```php
@@ -27,7 +29,7 @@ $attributes = [
 ```php
 $attributes = [
     'default_value' => '',
-    'new_lines'	 => '',
+    'new_lines'	 => 'wpautop' || 'br' || '', // wpautop adds paragraphs automatically, br saves enters, '' won't add any formatting 
     'maxlength' => '',
     'placeholder' => '',
     'rows' => ''
