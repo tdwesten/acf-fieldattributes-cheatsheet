@@ -4,6 +4,15 @@ This is a overview of all default attributes associated with the different ACF(p
 Last update: 27/09/2017
 ACF version: 5.6.2
 
+### Default field attributes
+```php
+$default_attributes = [
+	'name' => 'field_name',
+	'label' => 'Field name',
+	'key' => 'key_field_name', // This one gets generated randomly, so in most cases there is no need to set this.
+];
+```
+
 ### Text field
 ```php
 $attributes = [
