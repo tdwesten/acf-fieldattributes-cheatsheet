@@ -365,3 +365,27 @@ $group = new Fieldsbuilder('name', [
     'instruction_placement' => 'label' || 'field', // Place label below label or below field
 ]);
 ```
+
+## Hide fields
+It is possible to hide default WordPress fields with the 'hide on screen' option. Important note: this only works when `hide_on_screen` is added to the first field group on the page. Use `menu_order` set the order of the fields group.
+
+```php
+$group->setGroupConfig('hide_on_screen', [
+	'the_content',
+	'permalink',
+	'excerpt',
+	'custom_fields',
+	'discussion',
+	'comments',
+	'revisions',
+	'slug',
+	'author',
+	'format',
+	'page_attributes',
+	'featured_image',
+	'categories',
+	'tags',
+	'send-trackbacks',
+]);
+```
+
