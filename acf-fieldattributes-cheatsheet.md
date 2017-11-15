@@ -352,6 +352,29 @@ $attributes = [
 ];
 ```
 
+# Reuse fields
+Whenever you want to reuse fields, you can make a new FieldsBuilder containing all the fields you want to reuse. With the `->addFields($fields)` function you can implement the field in other field groups.
+
+Example: 
+```php
+$reused_fields = new FieldsBuilder( 'reused_fields' );
+$reused_fields
+	->addText( 'text_field' )
+	->addTextarea( 'textarea_field' );
+	
+$sample_group_one = new FieldsBuilder( 'sample_group_one' );
+$sample_group_one
+	->addFields( $reused_fields )
+	->addImage( 'sample_image_field' )
+	->setLocation('post_type' == 'page' );
+
+$sample_group_two = new FieldsBuilder( 'sample_group_two' );
+$sample_group_two
+	->addText( 'sample_text_field' )
+	->addFields( $reused_fields )
+	->setLocation('post_type' == 'post' );
+```	
+
 # Field group config
 Apart from the specific fields there are some default setting for the entire group: 
 
