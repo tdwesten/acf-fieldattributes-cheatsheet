@@ -354,6 +354,60 @@ $attributes = [
 ];
 ```
 
+## Conditional logic
+You can add conditional logic to a field by adding some array checks.
+
+**Simple example**
+```php
+'conditional_logic' => [
+	[
+		[
+			'field' => 'field_name',
+			'operator' => '==',
+			'value' => '1',
+		],
+	],
+];
+```
+
+**Example with multiple fields any**
+```php
+'conditional_logic' => [
+	[
+		[
+			'field' => 'field_name',
+			'operator' => '==',
+			'value' => '1',
+		],
+	],
+	[
+		[
+			'field' => 'other_field_name',
+			'operator' => '==',
+			'value' => '1',
+		],
+	],
+],
+```
+
+**Example with multiple fields all**
+```php
+'conditional_logic' => [
+	[
+		[
+			'field' => 'field_name',
+			'operator' => '==',
+			'value' => '1',
+		],
+		[
+			'field' => 'other_field_name',
+			'operator' => '==',
+			'value' => '1',
+		],
+	],
+],
+```
+
 # Reuse fields
 Whenever you want to reuse fields, you can make a new FieldsBuilder containing all the fields you want to reuse. With the `->addFields($fields)` function you can implement the field in other field groups.
 
