@@ -12,6 +12,8 @@ $default_attributes = [
 	'name' => 'field_name',
 	'label' => 'Field name',
 	'key' => 'key_field_name', // This one gets generated randomly, so in most cases there is no need to set this.
+	'prepend' => '',
+	'append' => '',
 ];
 ```
 
