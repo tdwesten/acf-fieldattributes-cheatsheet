@@ -6,6 +6,23 @@ ACF version: 5.6.4
 
 Full description about registering ACF Fields for PHP is available her: [Register fields via PHP](https://www.advancedcustomfields.com/resources/register-fields-via-php/)
 
+## Construct Group
+
+### Default group attributes and group construction
+```php
+$group = new Fieldsbuilder('name', [
+    'key' => 'custom_name',
+    'title' => 'Name',
+    'style' => 'default' || 'seamless',
+    'position' => 'normal' || 'acf_after_title' || 'side',
+    'menu_order' => 0,
+    'label_placement' => 'top' || 'left',  
+    'instruction_placement' => 'label' || 'field', // Place label below label or below field
+]);
+```
+
+## Fields
+
 ### Default field attributes
 ```php
 $default_attributes = [
@@ -14,6 +31,11 @@ $default_attributes = [
 	'key' => 'key_field_name', // This one gets generated randomly, so in most cases there is no need to set this.
 	'prepend' => '',
 	'append' => '',
+	'wrapper' => [
+		'width' => '100%',
+		'class' => '',
+		'id' => '',
+	],
 ];
 ```
 
@@ -27,6 +49,9 @@ $attributes = [
     'append' => ''
 ];
 ```
+```php
+$group->addText('field_name', $attributes);
+```
 ### Textarea
 ```php
 $attributes = [
@@ -36,6 +61,9 @@ $attributes = [
     'placeholder' => '',
     'rows' => ''
 ];
+```
+```php
+$group->addTextarea('field_name', $attributes);
 ```
 ### Number
 ```php
@@ -49,6 +77,9 @@ $attributes = [
     'append' => ''
 ];
 ```
+```php
+$group->addNumber('field_name', $attributes);
+```
 ### Email
 ```php
 $attributes = [
@@ -58,12 +89,18 @@ $attributes = [
     'append' => ''
 ];
 ```
+```php
+$group->addEmail('field_name', $attributes);
+```
 ### Url
 ```php
 $attributes = [
     'default_value' => '',
     'placeholder' => '',
 ];
+```
+```php
+$group->addUrl('field_name', $attributes);
 ```
 ### Password
 ```php
@@ -72,6 +109,9 @@ $attributes = [
     'prepend' => '',
     'append' => '',
 ];
+```
+```php
+$group->addPassword('field_name', $attributes);
 ```
 ### Range
 ```php
@@ -84,6 +124,9 @@ $attributes = [
     'append' => ''
 ];
 ```
+```php
+$group->addRange('field_name', $attributes);
+```
 ### Wysiwyg Editor
 ```php
 $attributes = [
@@ -94,12 +137,18 @@ $attributes = [
     'delay' => 0
 ];
 ```
+```php
+$group->addWysiwyg('field_name', $attributes);
+```
 ### oEmbed
 ```php
 $attributes = [
     'width' => '',
     'height' => '',
 ];
+```
+```php
+$group->addOembed('field_name', $attributes);
 ```
 ### Image
 ```php
@@ -116,6 +165,9 @@ $attributes = [
     'mime_types' => ''
 ];
 ```
+```php
+$group->addImage('field_name', $attributes);
+```
 ### File
 ```php
 $attributes = [
@@ -125,6 +177,9 @@ $attributes = [
     'max_size' => 0,
     'mime_types' => ''
 ];
+```
+```php
+$group->addFile('field_name', $attributes);
 ```
 ### Gallery (Pro)
 ```php
@@ -142,11 +197,17 @@ $attributes = [
     'insert' => 'append'
 ];
 ```
+```php
+$group->addGallery('field_name', $attributes);
+```
 ### Link
 ```php
 $attributes = [
-	'return_format'	=> 'array',
+	'return_format'	=> 'array' || 'id',
 ];
+```
+```php
+$group->addLink('field_name', $attributes);
 ```
 ### Post Object
 ```php
@@ -159,6 +220,9 @@ $attributes = [
     'ui' => 1,
 ];
 ```
+```php
+$group->addPostObject('field_name', $attributes);
+```
 ### Page Link
 ```php
 $attributes = [
@@ -168,6 +232,9 @@ $attributes = [
     'multiple' => 0,
     'allow_archives' => 1
 ];
+```
+```php
+$group->addPageLink('field_name', $attributes);
 ```
 ### Relationship
 ```php
@@ -181,7 +248,9 @@ $attributes = [
     'return_format' => 'object'
 ];
 ```
-
+```php
+$group->addRelationship('field_name', $attributes);
+```
 ### Taxonomy
 ```php
 $attributes = [
@@ -195,6 +264,9 @@ $attributes = [
     'save_terms' => 0
 ];
 ```
+```php
+$group->addTaxonomy('field_name', $attributes);
+```
 ### User
 ```php
 $attributes = [
@@ -202,6 +274,9 @@ $attributes = [
     'multiple' => 0,
     'allow_null' => 0,
 ];
+```
+```php
+$group->addUser('field_name', $attributes);
 ```
 ### Select
 ```php
@@ -218,6 +293,9 @@ $attributes = [
     'return_format'	=> 'value'
 ];
 ```
+```php
+$group->addSelect('field_name', $attributes);
+```
 ### Checkbox
 ```php
 $attributes = [
@@ -231,6 +309,9 @@ $attributes = [
     'toggle' => 0,
     'return_format' => 'value'
 ];
+```
+```php
+$group->addCheckbox('field_name', $attributes);
 ```
 ### Radio
 ```php
@@ -246,6 +327,9 @@ $attributes = [
     'return_format' => 'value'
 ];
 ```
+```php
+$group->addRadio('field_name', $attributes);
+```
 ### True / False
 ```php
 $attributes = [
@@ -256,6 +340,9 @@ $attributes = [
     'ui_off_text' => '',
 ];
 ```
+```php
+$group->addTrueFalse('field_name', $attributes);
+```
 ### Google Map
 ```php
 $attributes = [
@@ -265,6 +352,9 @@ $attributes = [
     'zoom' => ''
 ];
 ```
+```php
+$group->addGoogleMap('field_name', $attributes);
+```
 ### Date Picker
 ```php
 $attributes = [
@@ -272,6 +362,19 @@ $attributes = [
     'return_format' => 'd/m/Y',
     'first_day' => 1
 ];
+```
+```php
+$group->addDatePicker('field_name', $attributes);
+```
+### Time Picker
+```php
+$attributes = [
+    'display_format' => 'g:i a',
+    'return_format' => 'g:i a',
+];
+```
+```php
+$group->addTimePicker('field_name', $attributes);
 ```
 ### Date Time Picker
 ```php
@@ -281,12 +384,8 @@ $attributes = [
     'first_day' => 1
 ];
 ```
-### Time Picker
 ```php
-$attributes = [
-    'display_format' => 'g:i a',
-    'return_format' => 'g:i a',
-];
+$group->addDateTimePicker('field_name', $attributes);
 ```
 ### Color Picker
 ```php
@@ -294,19 +393,19 @@ $attributes = [
     'default_value'	=> 0,
 ];
 ```
-### Color Picker
 ```php
-$attributes = [
-    'default_value'	=> 0,
-];
+$group->addColorPicker('field_name', $attributes);
 ```
 ### Message
 ```php
 $attributes = [
-    'message' => '',
+    'message' => '', // Can also be added to the function, see below
     'esc_html' => 0,
     'new_lines' => 'wpautop',
 ];
+```
+```php
+$group->addMessage('field_name', 'message', $attributes);
 ```
 ### Tab
 ```php
@@ -315,12 +414,18 @@ $attributes = [
     'endpoint' => 0
 ];
 ```
+```php
+$group->addTab('field_name', $attributes);
+```
 ### Group
 ```php
 $attributes = [
     'sub_fields' => array(),
     'layout' => 'block'
 ];
+```
+```php
+$group->addGroup('field_name', $attributes);
 ```
 ### Repeater
 ```php
@@ -333,6 +438,12 @@ $attributes = [
     'collapsed' => ''
 ];
 ```
+```php
+$group
+	->addRepeater('field_name', $attributes)
+	// Repeater fields
+	->endRepeater();
+```
 ### Flexible Content
 ```php
 $attributes = [
@@ -341,6 +452,12 @@ $attributes = [
     'max' => '',
 	'button_label'=> "Add Row",
 ];
+```
+```php
+$group
+	->addFlexibleContent('field_name', $attributes)
+	->addLayout('layout_name', $layout_aatributes)
+	->addLayout($other_group);
 ```
 ### Clone
 Not supported via a arrow function [https://github.com/StoutLogic/acf-builder/issues/37].
@@ -352,6 +469,16 @@ $attributes = [
     'display' => 'seamless',
     'layout' => 'block'
 ];
+```
+
+### Custom field
+```php
+$group->addField('field_name', 'field_type', $default_attributes);
+```
+
+**Example: Gravity Forms field**
+```php
+$group->addField('form', 'gravity_forms_field', $default_attributes);
 ```
 
 ## Conditional logic
@@ -408,7 +535,7 @@ You can add conditional logic to a field by adding some array checks.
 ],
 ```
 
-# Reuse fields
+## Reuse fields
 Whenever you want to reuse fields, you can make a new FieldsBuilder containing all the fields you want to reuse. With the `->addFields($fields)` function you can implement the field in other field groups.
 
 Example: 
@@ -431,24 +558,8 @@ $sample_group_two
 	->setLocation('post_type' == 'post' );
 ```	
 
-# Field group config
-Apart from the specific fields there are some default setting for the entire group: 
-
-### GroupConfig
-```php
-$group = new Fieldsbuilder('name', [
-    'key' => 'custom_name',
-    'title' => 'Name',
-    'style' => 'default' || 'seamless',
-    'position' => 'normal' || 'acf_after_title' || 'side',
-    'menu_order' => 0,
-    'label_placement' => 'top' || 'left',  
-    'instruction_placement' => 'label' || 'field', // Place label below label or below field
-]);
-```
-
-## Hide fields
-It is possible to hide default WordPress fields with the 'hide on screen' option. Important note: this only works when `hide_on_screen` is added to the first field group on the page. Use `menu_order` set the order of the fields group.
+# Hide WordPress fields
+It is possible to hide WordPress fields when adding the 'hide on screen' option to a group. Important note: this only works when `hide_on_screen` is added to the first field group on the admin page. Use `menu_order` in the group attributes to set the order of the field groups.
 
 ```php
 $group->setGroupConfig('hide_on_screen', [
