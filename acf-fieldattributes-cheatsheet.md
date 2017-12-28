@@ -130,8 +130,8 @@ $group->addRange('field_name', $attributes);
 ### Wysiwyg Editor
 ```php
 $attributes = [
-    'tabs' => 'all',
-    'toolbar' => 'full',
+    'tabs' => 'all' || 'visual' || 'text',
+    'toolbar' => 'full' || 'basic',
     'media_upload' => 1,
     'default_value' => '',
     'delay' => 0
@@ -153,16 +153,16 @@ $group->addOembed('field_name', $attributes);
 ### Image
 ```php
 $attributes = [
-    'return_format' => 'array',
+    'return_format' => 'array' || 'id' || 'url',
     'preview_size' => 'thumbnail',
-    'library' => 'all',
+    'library' => 'all' || 'uploadedTo',
     'min_width' => 0,
     'min_height' => 0,
     'min_size' => 0,
     'max_width' => 0,
     'max_height' => 0,
     'max_size' => 0,
-    'mime_types' => ''
+    'mime_types' => '' // e.g. 'jpg,jpeg,png'
 ];
 ```
 ```php
@@ -171,8 +171,8 @@ $group->addImage('field_name', $attributes);
 ### File
 ```php
 $attributes = [
-    'return_format'	=> 'array',
-    'library' => 'all',
+    'return_format' => 'array' || 'id' || 'url',
+    'library' => 'all' || 'uploadedTo',
     'min_size' => 0,
     'max_size' => 0,
     'mime_types' => ''
@@ -184,7 +184,7 @@ $group->addFile('field_name', $attributes);
 ### Gallery (Pro)
 ```php
 $attributes = [
-    'library' => 'all',
+    'library' => 'all' || 'uploadedTo',
     'min' => 0,
     'max' => 0,
     'min_width' => 0,
@@ -194,7 +194,7 @@ $attributes = [
     'max_height' => 0,
     'max_size' => 0,
     'mime_types' => '',
-    'insert' => 'append'
+    'insert' => 'append' || 'prepend',
 ];
 ```
 ```php
@@ -212,11 +212,11 @@ $group->addLink('field_name', $attributes);
 ### Post Object
 ```php
 $attributes = [
-    'post_type' => array(),
-    'taxonomy' => array(),
+    'post_type' => string || array(), // Use string for one post_type, array for multiple post_types
+    'taxonomy' => string || array(), // Use string for one taxonomy, array for multiple taxonomies
     'allow_null' => 0,
     'multiple' => 0,
-    'return_format'	=> 'object',
+    'return_format' => 'object' || 'id',
     'ui' => 1,
 ];
 ```
@@ -227,10 +227,10 @@ $group->addPostObject('field_name', $attributes);
 ```php
 $attributes = [
     'post_type'	=> string || array(), // Use string for one post_type, array for multiple post_types
-    'taxonomy' => array(),
+    'taxonomy' => string || array(), // Use string for one taxonomy, array for multiple taxonomies
     'allow_null' => 0,
     'multiple' => 0,
-    'allow_archives' => 1
+    'allow_archives' => 1,
 ];
 ```
 ```php
@@ -240,12 +240,12 @@ $group->addPageLink('field_name', $attributes);
 ```php
 $attributes = [
     'post_type'	=> string || array(), // Use string for one post_type, array for multiple post_types
-    'taxonomy' => array(),
+    'taxonomy' => string || array(), // Use string for one taxonomy, array for multiple taxonomies
     'min' => 0,
     'max'  => 0,
     'filters' => array('search', 'post_type', 'taxonomy'),
-    'elements' => array(),
-    'return_format' => 'object'
+    'elements' => array('featured_image'),
+    'return_format' => 'object' || 'id',
 ];
 ```
 ```php
@@ -254,11 +254,11 @@ $group->addRelationship('field_name', $attributes);
 ### Taxonomy
 ```php
 $attributes = [
-    'taxonomy' => 'category',
-    'field_type' => 'checkbox',
+    'taxonomy' => string || array(), // Use string for one taxonomy, array for multiple taxonomies
+    'field_type' => 'checkbox' || 'multi_select' || 'radio' || 'select',
     'multiple' => 0,
     'allow_null' => 0,
-    'return_format' => 'id',
+    'return_format' => 'id' || 'object',
     'add_term' => 1,
     'load_terms' => 0,
     'save_terms' => 0
@@ -270,7 +270,7 @@ $group->addTaxonomy('field_name', $attributes);
 ### User
 ```php
 $attributes = [
-    'role' => '',
+    'role' => array() // array with user roles,
     'multiple' => 0,
     'allow_null' => 0,
 ];
@@ -299,7 +299,7 @@ $group->addSelect('field_name', $attributes);
 ### Checkbox
 ```php
 $attributes = [
-    'layout' => 'vertical',
+    'layout' => 'vertical' || 'horizontal',
     'choices' => [
     	[ 'value' => 'Label', ]
     ],
@@ -316,7 +316,7 @@ $group->addCheckbox('field_name', $attributes);
 ### Radio
 ```php
 $attributes = [
-    'layout' => 'vertical',
+    'layout' => 'vertical' || 'horizontal',
     'choices' => [
     	[ 'value' => 'Label', ]
     ],
@@ -333,7 +333,7 @@ $group->addRadio('field_name', $attributes);
 ### True / False
 ```php
 $attributes = [
-    'default_value'	=> 0,
+    'default_value' => 0,
     'message' => '',
     'ui' => 0,
     'ui_on_text' => '',
