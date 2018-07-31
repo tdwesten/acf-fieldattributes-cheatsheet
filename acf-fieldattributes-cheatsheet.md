@@ -213,7 +213,7 @@ $group->addLink('field_name', $attributes);
 ```php
 $attributes = [
     'post_type' => string || array(), // Use string for one post_type, array for multiple post_types
-    'taxonomy' => string || array(), // Use string for one taxonomy, array for multiple taxonomies
+    'taxonomy' => 'taxonomy-slug:item-slug' || ['taxonomy-slug:item-slug'], // Use string for one taxonomy, array for multiple taxonomies
     'allow_null' => 0,
     'multiple' => 0,
     'return_format' => 'object' || 'id',
@@ -227,7 +227,7 @@ $group->addPostObject('field_name', $attributes);
 ```php
 $attributes = [
     'post_type'	=> string || array(), // Use string for one post_type, array for multiple post_types
-    'taxonomy' => string || array(), // Use string for one taxonomy, array for multiple taxonomies
+    'taxonomy' => 'taxonomy-slug:item-slug' || ['taxonomy-slug:item-slug'], // Use string for one taxonomy, array for multiple taxonomies
     'allow_null' => 0,
     'multiple' => 0,
     'allow_archives' => 1,
@@ -240,7 +240,7 @@ $group->addPageLink('field_name', $attributes);
 ```php
 $attributes = [
     'post_type'	=> string || array(), // Use string for one post_type, array for multiple post_types
-    'taxonomy' => string || array(), // Use string for one taxonomy, array for multiple taxonomies
+    'taxonomy' => 'taxonomy-slug:item-slug' || ['taxonomy-slug:item-slug'], // Use string for one taxonomy, array for multiple taxonomies
     'min' => 0,
     'max'  => 0,
     'filters' => array('search', 'post_type', 'taxonomy'),
