@@ -433,9 +433,9 @@ $attributes = [
     'sub_fields' => array(),
     'min' => 0,
     'max' => 0,
-    'layout' => 'table',
+    'layout' => 'table' || 'row' || 'block',
     'button_label' => '',
-    'collapsed' => ''
+    'collapsed' => 'sub_field_name' // Shows the specified sub field when a repeater row is collapsed.
 ];
 ```
 ```php
@@ -444,6 +444,14 @@ $group
 	// Repeater fields
 	->endRepeater();
 ```
+**Layouts**
+
+The repeater fields can be shown in 3 different ways in the admin. 
+
+- `Table`: all sub fields will be shown on one line. Works great with a few sub fields. 
+- `Row`: all sub fields will be shown underneath each other, but you can’t control the width, like normal fields. 
+- `Block`: the sub fields are shown just like other fields are visible. You can control the wrapper width as well. Works best for more complex repeaters. 
+
 ### Flexible Content
 ```php
 $attributes = [
