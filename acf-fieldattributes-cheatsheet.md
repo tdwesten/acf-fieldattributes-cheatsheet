@@ -254,7 +254,7 @@ $group->addRelationship('field_name', $attributes);
 ### Taxonomy
 ```php
 $attributes = [
-    'taxonomy' => string || array(), // Use string for one taxonomy, array for multiple taxonomies
+    'taxonomy' => string
     'field_type' => 'checkbox' || 'multi_select' || 'radio' || 'select',
     'multiple' => 0,
     'allow_null' => 0,
