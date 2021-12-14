@@ -290,7 +290,7 @@ $attributes = [
     'ui' => 0,
     'ajax' => 0,
     'placeholder' => '',
-    'return_format'	=> 'value'
+    'return_format' => 'value' || 'label' || 'both' (returns array)
 ];
 ```
 ```php
@@ -307,7 +307,7 @@ $attributes = [
     'allow_custom' => 0,
     'save_custom' => 0,
     'toggle' => 0,
-    'return_format' => 'value'
+    'return_format' => 'value' || 'label' || 'both' (returns array)
 ];
 ```
 ```php
@@ -324,7 +324,7 @@ $attributes = [
     'other_choice' => 0,
     'save_other_choice'	=> 0,
     'allow_null' => 0,
-    'return_format' => 'value'
+    'return_format' => 'value' || 'label' || 'both' (returns array)
 ];
 ```
 ```php
