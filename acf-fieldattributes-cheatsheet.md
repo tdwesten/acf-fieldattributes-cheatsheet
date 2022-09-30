@@ -1,8 +1,8 @@
 # Fields attributes cheatsheet
 This is a overview of all default attributes associated with the different ACF(pro) fields. This Cheatsheet is quite handy when creating ACF fields with the [StoutLogic Acf Builder](https://github.com/StoutLogic/acf-builder).
 
-Last update: 07-11-2017
-ACF version: 5.6.4
+Last update: 30-09-2022
+ACF version: 6.0.2
 
 Full description about registering ACF Fields for PHP is available her: [Register fields via PHP](https://www.advancedcustomfields.com/resources/register-fields-via-php/)
 
@@ -543,6 +543,46 @@ You can add conditional logic to a field by adding some array checks.
 ],
 ```
 
+## Locations
+You can specify one of many locations where the fields should be used.
+
+Set one location:
+```php
+$field_group
+	->addFields( ... )
+	->setLocation('post_type', '==', 'post');
+```
+
+Show fields on multiple locations:
+```php
+$field_group
+	->addFields( ... )
+	->setLocation('post_type', '==', 'post')
+	->or('post_type', '==', 'custom_post_type');
+```
+
+Show fields on with more logic:
+```php
+$field_group
+	->addFields( ... )
+	->setLocation('post_type', '==', 'page')
+	->and('page_template', '!=', 'page-template.php')
+	->and('page_type', '!=', 'front_page')
+	->or('post_type', '==', 'post');
+```
+
+**Possible locations**
+```php
+'post_type' 	// ->setLocation('post_type', '==', 'post')
+'page_type' 	// ->setLocation('page_type', '==', 'front_page')
+'page_template' // ->setLocation('page_template', '==', 'page-template.php')
+'options_page' 	// ->setLocation('options_page', '==', 'acf-options-page')
+'taxonomy' 	// ->setLocation('taxonomy', '==', 'category')
+'nav_menu_item'	// ->setLocation('nav_menu_item', '==', 'location/main-menu')
+'ef_user'	// ->setLocation( 'ef_user', '==', 'all' )
+...		// TODO: List other default options?
+```
+
 ## Reuse fields
 Whenever you want to reuse fields, you can make a new FieldsBuilder containing all the fields you want to reuse. With the `->addFields($fields)` function you can implement the field in other field groups.
 
@@ -557,13 +597,13 @@ $sample_group_one = new FieldsBuilder( 'sample_group_one' );
 $sample_group_one
 	->addFields( $reused_fields )
 	->addImage( 'sample_image_field' )
-	->setLocation('post_type' == 'page' );
+	->setLocation('post_type', '==', 'page' );
 
 $sample_group_two = new FieldsBuilder( 'sample_group_two' );
 $sample_group_two
 	->addText( 'sample_text_field' )
 	->addFields( $reused_fields )
-	->setLocation('post_type' == 'post' );
+	->setLocation('post_type', '==', 'post' );
 ```	
 
 # Hide WordPress fields
