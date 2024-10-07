@@ -579,7 +579,10 @@ $field_group
 'options_page' 	// ->setLocation('options_page', '==', 'acf-options-page')
 'taxonomy' 	// ->setLocation('taxonomy', '==', 'category')
 'nav_menu_item'	// ->setLocation('nav_menu_item', '==', 'location/main-menu')
-'ef_user'	// ->setLocation( 'ef_user', '==', 'all' )
+'user_role'	// ->setLocation( 'user_role', '==', 'all' )
+'user_form'	// ->setLocation( 'user_form', '==', 'all' )
+		// Using all will also show the field group on the User register page if available
+		// Possible values: all || add || edit || register
 ...		// TODO: List other default options?
 ```
 
